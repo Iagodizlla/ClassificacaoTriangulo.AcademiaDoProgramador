@@ -15,15 +15,15 @@
                 {
                     Cabecalho();
                     var (lado1, lado2, lado3) = DadosDosLados();
-                    EbibirDados(lado1, lado2, lado3);
+                    ExibirDados(lado1, lado2, lado3);
 
                     if (VerificarTipo.TrianguloValido(lado1, lado2, lado3))
                     {
-                        if (VerificarTipo.TranguloEquilatero(lado1, lado2, lado3))
+                        if (ClassificadorDeTriangulo.TrianguloEquilatero(lado1, lado2, lado3))
                         {
                             tipo = "Equilatero";
                         }
-                        else if (VerificarTipo.TranguloIsosceles(lado1, lado2, lado3))
+                        else if (ClassificadorDeTriangulo.TrianguloIsosceles(lado1, lado2, lado3))
                         {
                             tipo = "Isósceles";
                         }
@@ -64,7 +64,7 @@
             string op = Console.ReadLine()!;
             return op;
         }
-        static void EbibirDados(double lado1, double lado2, double lado3)
+        static void ExibirDados(double lado1, double lado2, double lado3)
         {
             Cabecalho();
             Console.WriteLine($"Lado 1: {lado1}");

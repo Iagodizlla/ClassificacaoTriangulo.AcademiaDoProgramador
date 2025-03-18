@@ -8,15 +8,6 @@ namespace ClassidicacaoTriangulo.ConsoleApp
 {
     public class VerificarTipo
     {
-
-        public static bool TranguloEquilatero(double lado1, double lado2, double lado3)
-        {
-            return lado1 == lado2 && lado2 == lado3;
-        }
-        public static bool TranguloIsosceles(double lado1, double lado2, double lado3)
-        {
-            return lado1 == lado2 || lado2 == lado3 || lado1 == lado3;
-        }
         public static bool TrianguloValido(double lado1, double lado2, double lado3)
         {
             return lado1 + lado2 > lado3 && lado1 + lado3 > lado2 && lado2 + lado3 > lado1;
