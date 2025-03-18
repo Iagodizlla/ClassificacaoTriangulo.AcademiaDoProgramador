@@ -15,6 +15,7 @@
                 {
                     Cabecalho();
                     var (lado1, lado2, lado3) = DadosDosLados();
+                    EbibirDados(lado1, lado2, lado3);
 
                     if (VerificarTipo.TrianguloValido(lado1, lado2, lado3))
                     {
@@ -62,6 +63,14 @@
             Console.WriteLine("--------------------------------");
             string op = Console.ReadLine()!;
             return op;
+        }
+        static void EbibirDados(double lado1, double lado2, double lado3)
+        {
+            Cabecalho();
+            Console.WriteLine($"Lado 1: {lado1}");
+            Console.WriteLine($"Lado 2: {lado2}");
+            Console.WriteLine($"Lado 3: {lado3}");
+            Console.WriteLine("--------------------------------");
         }
         static (double, double, double) DadosDosLados()
         {
