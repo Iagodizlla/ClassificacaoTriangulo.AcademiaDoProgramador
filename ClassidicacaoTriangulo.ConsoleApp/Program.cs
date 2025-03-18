@@ -1,4 +1,5 @@
-﻿namespace ClassidicacaoTriangulo.ConsoleApp
+﻿
+namespace ClassidicacaoTriangulo.ConsoleApp
 {
     internal class Program
     {
@@ -13,7 +14,6 @@
 
                 if (op == "1")
                 {
-                    Cabecalho();
                     var (lado1, lado2, lado3) = DadosDosLados();
                     ExibirDados(lado1, lado2, lado3);
 
@@ -74,17 +74,53 @@
         }
         static (double, double, double) DadosDosLados()
         {
-            Console.Write("\nDigite o valor do lado 1: ");
-            double lado1 = double.Parse(Console.ReadLine()!);
-            Console.Write("Digite o valor do lado 2: ");
-            double lado2 = double.Parse(Console.ReadLine()!);
-            Console.Write("Digite o valor do lado 3: ");
-            double lado3 = double.Parse(Console.ReadLine()!);
+            double lado1, lado2, lado3;
+            while (true)
+            {
+                Cabecalho();
+                Console.Write("\nDigite o valor do lado 1: ");
+                bool l1 = double.TryParse(Console.ReadLine()!, out double j);
+
+                Console.Write("Digite o valor do lado 2: ");
+                bool l2 = double.TryParse(Console.ReadLine()!, out double l);
+
+                Console.Write("Digite o valor do lado 3: ");
+                bool l3 = double.TryParse(Console.ReadLine()!, out double i);
+
+                if (l1 == false){
+                    Console.WriteLine("lado 1 é invalido!");
+                }
+                else if (l2 == false){
+                    Console.WriteLine("lado 2 é invalido!");
+                }
+                else if (l3 == false){
+                    Console.WriteLine("lado 3 é invalido!");
+                }
+                else{
+                    lado1 = j;
+                    lado2 = l;
+                    lado3 = i;
+                    break;
+                }
+                Console.ReadLine();
+            }
             return (lado1, lado2, lado3);
+
         }
         static void Resultado(string tipo)
         {
             Console.WriteLine($"Triangulo do tipo: {tipo}");
+            switch(tipo){
+                case "Equilatero":
+                    TrianguloGeometrico.GeoEquilatero();
+                    break;
+                case "Isósceles":
+                    TrianguloGeometrico.GeoIsosceles();
+                    break;
+                case "Escaleno":
+                    TrianguloGeometrico.GeoEscaleno();
+                    break;
+            }
         }
     }
 }
