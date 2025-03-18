@@ -4,37 +4,26 @@
     {
         static void Main(string[] args)
         {
-            while(true) {
+            while (true)
+            {
                 string tipo;
-                Console.Clear();
-                Console.WriteLine("________________________________");
-                Console.WriteLine("Classificação de Triângulos");
-                Console.WriteLine("--------------------------------");
-                Console.WriteLine("1 - Classificar Triangulo\n2 - Sair");
-                Console.WriteLine("--------------------------------");
-                string op = Console.ReadLine()!;
+
+                Cabecalho();
+                string op = ExibirMenu();
 
                 if (op == "1")
                 {
-                    Console.Clear();
-                    Console.WriteLine("________________________________");
-                    Console.WriteLine("Classificação de Triângulos");
-                    Console.WriteLine("--------------------------------\n");
+                    Cabecalho();
+                    var (lado1, lado2, lado3) = DadosDosLados();
+                    ExibirDados(lado1, lado2, lado3);
 
-                    Console.Write("Digite o valor do lado 1: ");
-                    double lado1 = double.Parse(Console.ReadLine()!);
-                    Console.Write("Digite o valor do lado 2: ");
-                    double lado2 = double.Parse(Console.ReadLine()!);
-                    Console.Write("Digite o valor do lado 3: ");
-                    double lado3 = double.Parse(Console.ReadLine()!);
-
-                    if(lado1 + lado2 > lado3 && lado1 + lado3 > lado2 && lado2 + lado3 > lado1)
+                    if (VerificarTipo.TrianguloValido(lado1, lado2, lado3))
                     {
-                        if (lado1 == lado2 && lado2 == lado3)
+                        if (ClassificadorDeTriangulo.TrianguloEquilatero(lado1, lado2, lado3))
                         {
                             tipo = "Equilatero";
                         }
-                        else if (lado1 == lado2 || lado2 == lado3 || lado1 == lado3)
+                        else if (ClassificadorDeTriangulo.TrianguloIsosceles(lado1, lado2, lado3))
                         {
                             tipo = "Isósceles";
                         }
@@ -45,11 +34,10 @@
                     }
                     else
                     {
-                        Console.WriteLine("Não é um triângulo!");
-                        Console.ReadLine();
+                        VerificarTipo.TrianguloInvalido();
                         continue;
                     }
-                    Console.WriteLine($"Triangulo do tipo: {tipo}");
+                    Resultado(tipo);
                 }
                 else if (op == "2")
                 {
@@ -61,6 +49,42 @@
                 }
                 Console.ReadLine();
             }
+        }
+        static void Cabecalho()
+        {
+            Console.Clear();
+            Console.WriteLine("________________________________");
+            Console.WriteLine("Classificação de Triângulos");
+            Console.WriteLine("--------------------------------");
+        }
+        static string ExibirMenu()
+        {
+            Console.WriteLine("1 - Classificar Triangulo\n2 - Sair");
+            Console.WriteLine("--------------------------------");
+            string op = Console.ReadLine()!;
+            return op;
+        }
+        static void ExibirDados(double lado1, double lado2, double lado3)
+        {
+            Cabecalho();
+            Console.WriteLine($"Lado 1: {lado1}");
+            Console.WriteLine($"Lado 2: {lado2}");
+            Console.WriteLine($"Lado 3: {lado3}");
+            Console.WriteLine("--------------------------------");
+        }
+        static (double, double, double) DadosDosLados()
+        {
+            Console.Write("\nDigite o valor do lado 1: ");
+            double lado1 = double.Parse(Console.ReadLine()!);
+            Console.Write("Digite o valor do lado 2: ");
+            double lado2 = double.Parse(Console.ReadLine()!);
+            Console.Write("Digite o valor do lado 3: ");
+            double lado3 = double.Parse(Console.ReadLine()!);
+            return (lado1, lado2, lado3);
+        }
+        static void Resultado(string tipo)
+        {
+            Console.WriteLine($"Triangulo do tipo: {tipo}");
         }
     }
 }
