@@ -15,6 +15,7 @@ namespace ClassidicacaoTriangulo.ConsoleApp
         public static void TrianguloInvalido()
         {
             Console.WriteLine("Não é um triângulo!");
+            TrianguloGeometrico.GeoInvalido();
             Console.ReadLine();
         }
     }

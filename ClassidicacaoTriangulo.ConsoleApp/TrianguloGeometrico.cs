@@ -38,5 +38,16 @@ namespace ClassidicacaoTriangulo.ConsoleApp
             Console.WriteLine("/             \\_ ");
             Console.WriteLine("|_______________\\");
         }
+        public static void GeoInvalido()
+        {
+            Console.WriteLine("                    _____  ");
+            Console.WriteLine("|      /\\          /     \\");
+            Console.WriteLine("|     /  \\                |");
+            Console.WriteLine("|    /    \\              / ");
+            Console.WriteLine("|   /      \\          ==/  ");
+            Console.WriteLine("|  /        \\        ||    ");
+            Console.WriteLine("| /          \\             ");
+            Console.WriteLine("|/            \\      ()    ");
+        }
     }
 }
